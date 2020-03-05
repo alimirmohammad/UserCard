@@ -38,7 +38,7 @@ const UserList = () => {
         {loading && svgLoader}
         {!status && cardLists}
         <button className={styles.NewBtn} onClick={() => handleLink("https://api.randomuser.me/")}>
-          new
+          Add Card
         </button>
       </div>
     </>

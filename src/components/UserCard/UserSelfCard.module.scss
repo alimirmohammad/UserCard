@@ -1,61 +1,183 @@
+@import '../../mixin.scss';
+
 .card {
-  background-color: white;
-  border-radius: 10px;
+  position: relative;
+  background-color: #fff;
+  border-radius: .3rem;
   width: 60%;
-  min-width: 250px;
-  max-width: 600px;
-  margin: 0 auto 30px;
-  padding: 20px;
+  min-width: 25rem;
+  max-width: 60rem;
+  margin: 0 auto 3rem;
+  padding: 2rem 0;
+  box-shadow: 0 0 .1rem rgba(0,0,0,.5);
+  overflow: hidden;
   text-align: center;
+  z-index: 5;
+}
+
+.card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 13rem;
+  top: 0;
+  background: #f9f9f9;
+  border-bottom: .1rem solid rgba(0,0,0,.15);
+  z-index: -1;
+
+  @include respond(md) {
+    height: 11rem;
+  }
 }
 
 .image {
-  border: 1px solid gray;
-  padding: 5px;
+  border: .1rem solid rgba(0,0,0,.25);
+  background-color: #fff;
+  padding: .5rem;
   border-radius: 50%;
   display: inline-block;
-  width: 150px;
-  height: 150px;
+  width: 15rem;
+  height: 15rem;
   margin: 0 auto;
+
+  @include respond(md) {
+    width: 12rem;
+    height: 12rem;
+  }
 }
 
 .detail {
-  margin: 20px;
+  margin: 2rem;
 
   p {
     margin: 0;
   }
 
   .header {
-    font-size: 20px;
+    color: #999;
+    font-size: 1.8rem;
+    margin: 0;
+
+    @include respond(md) {
+      font-size: 1.5rem;
+    }
+    @include respond(sm) {
+      font-size: 1.25rem;
+    }
+    @include respond(xs) {
+      font-size: 1rem;
+    }
   }
   .content {
-    font-size: 30px;
-    font-weight: 500;
+    color: #2c2e31;
+    font-size: 3.8rem;
+    margin: .5rem;
+
+    @include respond(md) {
+      font-size: 3rem;
+    }
+    @include respond(sm) {
+      font-size: 2.5rem;
+    }
+    @include respond(xs) {
+      font-size: 2rem;
+    }
   }
 }
 
 .HoverItems {
   list-style: none;
+  padding-left: 8%;
 
   &::after {
     content: "";
     display: table;
     clear: both;
   }
+
+  @include respond(md) {
+    padding-left: 20%;
+  }
+  @include respond(sm) {
+    padding-left: 30%;
+  }
+  @include respond(xs) {
+    padding-left: 45%;
+  }
 }
 
 .HoverItem {
   float: left;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 4rem;
   color: #ccc;
+  position: relative;
+  
+  @include respond(md) {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 
   &:not(:last-child) {
-    margin-right: 56px;
+    margin-right: 10%;
+
+    @include respond(md) {
+      margin-right: 25%;
+    }
+    @include respond(sm) {
+      margin-right: 30%;
+    }
+    @include respond(xs) {
+      margin-right: 80%;
+    }
   }
 
   &:hover {
-    color: green;
+    color: #83ba43;
+    animation: moveInBottom .25s ease-out;
+    animation-fill-mode: forwards;
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -2rem;
+      height: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  &::before {
+    content: "";
+    opacity: 0;
+    display: inline-block;
+    width: 4rem;
+    height: .6rem;
+    background-image: url(../../assets/item-before.png);
+    background-size: 100%;
+    position: absolute;
+    top: -1rem;
+    left: 0;
+
+    @include respond(md) {
+      left: -.5rem;
+    }
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(2rem);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
 }

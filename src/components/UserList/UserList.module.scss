@@ -1,13 +1,42 @@
+$color-primary: #55c57a;
+$default-font-size: 1.6rem;
+$color-white: #fff;
+$color-black: #000;
+
 .NewBtn {
     position: absolute;
-    top: 70px;
+    top: 7rem;
     left: 50%;
     transform: translateX(-50%);
+    outline: none;
+    
+    font-size: $default-font-size;
+    color: $color-primary;
+    background-color: #fff;
+    display: inline-block;
+    border-bottom: .1rem solid $color-primary;
+    padding: .3rem;
+    transition: all .2s;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateX(-50%) translateY(-.2rem);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.15);
+        transform: translateX(-50%) translateY(0);
+    }
+    
 }
 
 .Loader {
     position: absolute;
-    top: 20px;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
 }
